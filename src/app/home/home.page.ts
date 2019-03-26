@@ -25,12 +25,25 @@ export class HomePage {
 
   private changeRate: number = 124.95;
 
+  private displayList: boolean = true;
+
+  private inputFruit:string;
+
   constructor(){
     this.firstName = "Siobbhan";
+  }
+
+  addFruit(){
+    if(this.inputFruit.trim() != ""){
+      this.fruitList.push(this.inputFruit);
+      this.inputFruit = "";
+    }
   }
 
   changeName(){
     this.firstName = "Aileen";
     this.buttonColor = this.buttonColor=="danger"?"secondary":"danger";
+
+    this.displayList = ! this.displayList;
   }
 }

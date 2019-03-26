@@ -35,7 +35,25 @@
     </ion-row>
   </ion-grid>
 
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-input type="text" placeholder="Nouveau fruit"
+        [(ngModel)]="inputFruit"></ion-input>
+      </ion-col>
+      <ion-col>
+        <ion-button expand="block" (click)="addFruit()">Valider</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
   <ion-list>
+    <ion-item *ngFor="let fruit of fruitList">
+      {{ fruit }}
+    </ion-item>
+  </ion-list>
+
+  <ion-list *ngIf="displayList">
     <ion-list-header>Formulaire</ion-list-header>
 
     <ion-item>
@@ -44,7 +62,7 @@
     </ion-item>
 
     <ion-item>
-      <p>{{ amountInEuro * changeRate }}</p>
+      <p>{{ amountInEuro * changeRate | currency:'JPY':true:'1.1-2' }}</p>
     </ion-item>
 
     <ion-item>
