@@ -1,14 +1,137 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Ionic Blank
+      Hello {{ firstName }}
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
+  <ion-button [color]="buttonColor" expand="block"
+  (click)="changeName()"
+  >
+    <ion-icon name="musical-notes"></ion-icon>
+    bouton ionic
+  </ion-button>
+
+  <p>{{ fruitList[0]+" yummy" }} {{ 5 + 2 }}</p>
+
+
+  <div>
+    Bonjour {{ person.name }} 
+    vous habitez en {{ person.country }} à 
+    {{ person.address }}
   </div>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="8">
+        <ion-button expand="block">bt 1</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button expand="block">bt 2</ion-button>
+      </ion-col>
+      
+    </ion-row>
+  </ion-grid>
+
+  <ion-list>
+    <ion-list-header>Formulaire</ion-list-header>
+
+    <ion-item>
+      <ion-label>Montant en euro</ion-label>
+      <ion-input type="text" [(ngModel)]="amountInEuro"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <p>{{ amountInEuro * changeRate }}</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Nom</ion-label>
+      <ion-input type="text" placeholder="Votre nom" 
+      [(ngModel)]="firstName"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">profession</ion-label>
+      <ion-select cancelText="Nannnnnn" okText="Okayyy" multiple="true" placeholder="Sélectionner une profession">
+        <ion-select-option>Développeur</ion-select-option>
+        <ion-select-option>Graphiste</ion-select-option>
+        <ion-select-option>Chef de projet</ion-select-option>
+        <ion-select-option>Architecte</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+
+    <ion-radio-group>
+
+      <ion-item>
+        <ion-label>Femme</ion-label>
+        <ion-radio value="f"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Homme</ion-label>
+        <ion-radio value="m"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Non binaire</ion-label>
+        <ion-radio value="nb"></ion-radio>
+      </ion-item>
+
+    </ion-radio-group>
+
+    <ion-item>
+      <ion-label>Age</ion-label>
+      <ion-range min="7" max="21" 
+      pin="true" snaps="true" dual-knobs="true"></ion-range>
+    </ion-item>
+
+
+    <ion-list-header>Fruits</ion-list-header>
+
+    <ion-item-sliding>
+      <ion-item>
+        <ion-icon name="logo-apple" slot="end"></ion-icon>
+        Pommes
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-button color="danger">
+          <ion-icon name="trash" slot="icon-only"></ion-icon>
+        </ion-button>
+      </ion-item-options>
+    </ion-item-sliding>
+
+    <ion-item>
+      <ion-thumbnail slot="start">
+        <ion-img src="/assets/img/poire.jpg"></ion-img>
+      </ion-thumbnail>
+      Poires
+    </ion-item>
+    <ion-item>
+      <ion-label>Oranges</ion-label>
+    </ion-item>
+
+    <ion-item-group>
+      <ion-item-divider>A</ion-item-divider>
+      <ion-item>abricots</ion-item>
+      <ion-item>ananas</ion-item>
+      <ion-item-divider>B</ion-item-divider>
+      <ion-item>bananes</ion-item>
+      <ion-item>brugnons</ion-item>
+    </ion-item-group>
+  </ion-list>
+
+
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title>
+      copyright moi et mon nombril
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>
