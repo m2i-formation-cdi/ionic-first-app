@@ -73,9 +73,36 @@ export class AnimalsPage implements OnInit {
     }
   ];
 
+  private chosenAnimal: any;
+
+  private audio: any;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  playSound() {
+    //arrêt du son en cours
+    if (this.audio && (this.audio.currentTime < this.audio.duration)) {
+      this.audio.pause();
+    }
+
+    //Si aucun animal n'a été sélectionné
+    if (!this.chosenAnimal) {
+      //Sélectionner un animal au hasard
+      let index = Math.floor(Math.random() * this.animals.length);
+      //Enregistrement de l'animal choisi
+      this.chosenAnimal = this.animals[index];
+    }
+
+
+    //Lecture du son
+    this.audio = new Audio();
+    this.audio.src = "assets" + this.chosenAnimal.file;
+    this.audio.load();
+    this.audio.play();
+
   }
 
 }

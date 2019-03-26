@@ -6,4 +6,36 @@
 
 <ion-content>
 
+  <ion-list>
+    <ion-item *ngFor="let animal of animals">
+
+      <ion-avatar slot="start">
+        <ion-img src="/assets/{{ animal.image }}"></ion-img>
+      </ion-avatar>
+
+      <ion-grid>
+
+        <ion-row>
+          <ion-col>
+            <h3>{{ animal.title }}</h3>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+              {{ animal.desc }}
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      
+      
+    </ion-item>
+  </ion-list>
+
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-button expand="block" (click)="playSound()">PLAY</ion-button>
+  </ion-toolbar>
+</ion-footer>
