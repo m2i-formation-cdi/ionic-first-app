@@ -87,6 +87,19 @@ export class AnimalsPage implements OnInit {
   ngOnInit() {
   }
 
+
+  onReorder(even){
+    console.log(even);
+    let animal = this.animals[even.detail.from];
+
+    this.animals.splice(even.detail.from, 1);
+
+    this.animals.splice(even.detail.to,0, animal);
+
+    even.detail.complete();
+    
+  }
+
   guess(animal){
     if(animal == this.chosenAnimal){
 
@@ -104,7 +117,7 @@ export class AnimalsPage implements OnInit {
 
       //Réinitialisation du jeu
       this.chosenAnimal = null;
-      
+
     } else {
 
       //Création du toast
