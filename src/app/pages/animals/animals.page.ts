@@ -104,8 +104,20 @@ export class AnimalsPage implements OnInit {
 
       //Réinitialisation du jeu
       this.chosenAnimal = null;
+      
     } else {
-      console.log("essaie encore");
+
+      //Création du toast
+      const toast = this.toastCtrl.create({
+        message: "Essaie encore petit abruti",
+        duration: 2000,
+        position: "middle"
+      });
+
+      //Affichage du toast
+      toast.then(function(toastElement){
+        toastElement.present();
+      });
     }
   }
 
