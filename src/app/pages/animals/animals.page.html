@@ -1,14 +1,19 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>animals</ion-title>
+    <!--<ion-buttons slot="end">-->
+      <ion-button (click)="toggleReorder()" 
+      [color]="reorderDisabled?'primary':'success'" slot="end">
+        <ion-icon name="reorder"></ion-icon>
+      </ion-button>
+    <!--</ion-buttons>-->
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
   <ion-list>
-    <ion-reorder-group disabled="false" 
-    (ionItemReorder)="onReorder($event)">
+    <ion-reorder-group [disabled]="reorderDisabled" (ionItemReorder)="onReorder($event)">
       <ion-item *ngFor="let animal of animals" (click)="guess(animal)">
         <ion-avatar slot="start">
           <ion-img src="/assets/{{ animal.image }}"></ion-img>
@@ -29,8 +34,8 @@
           </ion-row>
         </ion-grid>
 
-        <ion-reorder></ion-reorder>
-      
+        <ion-reorder [hidden]="reorderDisabled"></ion-reorder>
+
       </ion-item>
     </ion-reorder-group>
   </ion-list>

@@ -78,6 +78,8 @@ export class AnimalsPage implements OnInit {
 
   private audio: any;
 
+  private reorderDisabled:boolean = true;
+
 
 
   constructor(private toastCtrl: ToastController) { 
@@ -87,6 +89,10 @@ export class AnimalsPage implements OnInit {
   ngOnInit() {
   }
 
+
+  toggleReorder(){
+    this.reorderDisabled = ! this.reorderDisabled;
+  }
 
   onReorder(even){
     console.log(even);
