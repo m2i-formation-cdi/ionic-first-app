@@ -93,17 +93,25 @@ export class AnimalsPage implements OnInit {
   toggleReorder(){
     this.reorderDisabled = ! this.reorderDisabled;
   }
-
+  /**
+   * Réagencement de élements
+   * déclenché quand sur l'événement ionItemReorder
+   * lors l'on lâche un élément déplacé
+   * @param even 
+   */
   onReorder(even){
-    console.log(even);
+    //Enregistrement de l'animal déplacé
     let animal = this.animals[even.detail.from];
 
+    //Suppression de l'élément à la position d'origine
     this.animals.splice(even.detail.from, 1);
 
+    //Insertion de l'élément à la position cible
     this.animals.splice(even.detail.to,0, animal);
 
+    //Validation de l'operation
     even.detail.complete();
-    
+  
   }
 
   guess(animal){
