@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-animals',
@@ -77,9 +78,35 @@ export class AnimalsPage implements OnInit {
 
   private audio: any;
 
-  constructor() { }
+
+
+  constructor(private toastCtrl: ToastController) { 
+
+  }
 
   ngOnInit() {
+  }
+
+  guess(animal){
+    if(animal == this.chosenAnimal){
+
+      //Création du toast
+      const toast = this.toastCtrl.create({
+        message: "Bravo tu as gagné",
+        duration: 2000,
+        position: "middle"
+      });
+
+      //Affichage du toast
+      toast.then(function(toastElement){
+        toastElement.present();
+      });
+
+      //Réinitialisation du jeu
+      this.chosenAnimal = null;
+    } else {
+      console.log("essaie encore");
+    }
   }
 
   playSound() {
